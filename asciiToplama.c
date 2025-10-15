@@ -1,82 +1,83 @@
-#include <stdio.h>    // printf ve getchar gibi temel giriþ/çýkýþ fonksiyonlarý için
-
+#include <stdio.h>    // printf ve getchar gibi temel giriÅŸ/Ã§Ä±kÄ±ÅŸ fonksiyonlarÄ± iÃ§in
+#include <stdlib.h>
 int main() {
-    /* Kullanýcýnýn girdiði '0' ile '9' arasýndaki rakam karakterlerini tutar. */
+    /* KullanÄ±cÄ±nÄ±n girdiÄŸi '0' ile '9' arasÄ±ndaki rakam karakterlerini tutar. */
     char ascii1, ascii2;
     
-    /* getchar() fonksiyonunun dönüþ deðerini (veya tampon kontrolünü) tutmak için int kullanýrýz. 
-       Çünkü getchar() özel bir deðer olan EOF'u (dosya sonu) da döndürebilir. */
+    /* getchar() fonksiyonunun dÃ¶nÃ¼ÅŸ deÄŸerini (veya tampon kontrolÃ¼nÃ¼) tutmak iÃ§in int kullanÄ±rÄ±z. 
+       Ã‡Ã¼nkÃ¼ getchar() Ã¶zel bir deÄŸer olan EOF'u (dosya sonu) da dÃ¶ndÃ¼rebilir. */
     int ch;
     
     
-    // BÝRÝNCÝ RAKAM GÝRÝÞÝ
+    // BÄ°RÄ°NCÄ° RAKAM GÄ°RÄ°ÅžÄ°
     // ===================================
 
-    /* Kullanýcýya ne yapmasý gerektiðini söyle */
+    /* KullanÄ±cÄ±ya ne yapmasÄ± gerektiÄŸini sÃ¶yle */
     printf("ilk rakami (0-9) girin: ");
     
     /* Konsoldan tek bir karakteri oku ve ascii1'e kaydet. */
     ascii1 = (char)getchar();
     
-    /* Kullanýcý rakamý girip Enter'a bastýðýnda oluþan '\n' (satýr sonu) karakterini oku. */
+    /* KullanÄ±cÄ± rakamÄ± girip Enter'a bastÄ±ÄŸÄ±nda oluÅŸan '\n' (satÄ±r sonu) karakterini oku. */
     ch = getchar();
     
-    /* Eðer okunan ikinci karakter '\n' deðilse, kullanýcý tek rakamdan fazlasýný girmiþtir. */
+    /* EÄŸer okunan ikinci karakter '\n' deÄŸilse, kullanÄ±cÄ± tek rakamdan fazlasÄ±nÄ± girmiÅŸtir. */
     if (ch != '\n') {
         printf("\n=> HATALI INPUT GIRISI! Lutfen sadece 0-9 arasi tek rakam girin.\n");
         getchar();getchar();
-        return 1;    // Hata olduðunu belirten çýkýþ kodu
+        return 1;    // Hata olduÄŸunu belirten Ã§Ä±kÄ±ÅŸ kodu
     }
 
 
-    // ÝKÝNCÝ RAKAM GÝRÝÞÝ
+    // Ä°KÄ°NCÄ° RAKAM GÄ°RÄ°ÅžÄ°
     // ===================================
 
-    /* Kullanýcýdan ikinci rakamý iste */
+    /* KullanÄ±cÄ±dan ikinci rakamÄ± iste */
     printf("ikinci rakami (0-9) girin: ");
     
-    /* Ýkinci karakteri oku */
+    /* Ä°kinci karakteri oku */
     ascii2 = (char)getchar();
     
-    /* Ýkinci giriþten kalan '\n' karakterini oku */
+    /* Ä°kinci giriÅŸten kalan '\n' karakterini oku */
     ch = getchar();
     
-    /* Ýkinci giriþte de birden fazla karakter varsa hata ver */
+    /* Ä°kinci giriÅŸte de birden fazla karakter varsa hata ver */
     if (ch != '\n') {
         printf("\n=> HATALI INPUT GIRISI! Lutfen sadece 0-9 arasi tek rakam girin.\n");
         getchar();getchar();
-        return 1;    // Hata çýkýþ kodu
+        return 1;    // Hata Ã§Ä±kÄ±ÅŸ kodu
     }
 
 
     // KONTROL VE TOPLAMA
     // ===================================
 
-    /* Karakteri sayýsal deðerine çevir. 
-       Örneðin, '7' karakteri (ASCII 55), '0' karakteri (ASCII 48) çýkarýlarak 7 olur. */
+    /* Karakteri sayÄ±sal deÄŸerine Ã§evir. 
+       Ã–rneÄŸin, '7' karakteri (ASCII 55), '0' karakteri (ASCII 48) Ã§Ä±karÄ±larak 7 olur. */
     int num1 = ascii1 - '0';
     int num2 = ascii2 - '0';
 
-    /* Çevrilen sayýlarýn 0 ile 9 aralýðýnda olup olmadýðýný kontrol et. */
+    /* Ã‡evrilen sayÄ±larÄ±n 0 ile 9 aralÄ±ÄŸÄ±nda olup olmadÄ±ÄŸÄ±nÄ± kontrol et. */
     if (num1 >= 0 && num1 <= 9 && num2 >= 0 && num2 <= 9) {
              
         
-        /* Eðer her þey doðruysa, sayýsal toplamý hesapla. */
+        /* EÄŸer her ÅŸey doÄŸruysa, sayÄ±sal toplamÄ± hesapla. */
         int toplam = num1 + num2;
         
-        /* Sonucu yazdýr */
+        /* Sonucu yazdÄ±r */
         printf("Birinci girdinin ascii degeri %d => %d rakamina cevirildi.\n" , ascii1, num1);
         printf("Ikinci girdinin ascii degeri %d => %d rakamina cevirildi.\n" , ascii2, num2);
         printf("\nToplam (sayisal deger): %d\n ", toplam);
         getchar();
-        return 0;    // Program hatasýz bitti
+        return 0;    // Program hatasÄ±z bitti
     }
     
-    // YANLIÞ KARAKTER GÝRÝÞ HATASI
+    // YANLIÅž KARAKTER GÄ°RÄ°Åž HATASI
     // ===================================
 
-    /* Eðer yukarýdaki kontrol baþarýsýz olursa (Örn: kullanýcý 'a' veya '@' girerse) */
+    /* EÄŸer yukarÄ±daki kontrol baÅŸarÄ±sÄ±z olursa (Ã–rn: kullanÄ±cÄ± 'a' veya '@' girerse) */
     printf("\n=> HATALI INPUT GIRISI! Lutfen sadece 0-9 arasi rakam girin.\n ");
     getchar();
     return 1;    // Hata ile sonlan
 }
+
